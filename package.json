@@ -4,7 +4,11 @@
   "version": "1.0.0",
   "author": "wfl <763914998@qq.com>",
   "license": "MIT",
-  "private": true,
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WFLNANA/vue-wfl-calendar"
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"

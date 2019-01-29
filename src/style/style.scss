@@ -1,0 +1,124 @@
+/*
+ * @Author: wfl 
+ * @Date: 2019-01-28 14:46:50 
+ * @Last Modified by: wfl
+ * @Last Modified time: 2019-01-29 18:25:45
+ */
+
+$w-color: #6f6f6f;
+$w-not-now-color: #d8d5d5;
+$yl-color: #8e8b8b;
+$now-color: #fff;
+
+.white-theme {
+  width: 100%;
+  background: #fff;
+  color: $w-color;
+
+  .calendar-day,
+  .calendar-day-now,
+  .calendar-day-on {
+    display: inline-block;
+    border-radius: 50%;
+    margin: 3px;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0);
+    transition: all .15s ease-in-out;
+    -webkit-transition: all .15s ease-in-out;
+
+    .white-now {
+      color: $w-color;
+    }
+
+    .white-not-now {
+      color: $w-not-now-color;
+    }
+
+    section {
+      position: relative;
+    }
+
+    p {
+      margin: 0;
+      padding: 2px 0;
+    }
+
+    .white-now-yl {
+      font-size: 12px;
+      color: $yl-color;
+    }
+
+    .white-not-now-yl {
+      font-size: 12px;
+      color: $w-not-now-color;
+    }
+  }
+
+  .calendar-head {
+    padding: 10px 0;
+
+    span {
+      padding: 0px 15%;
+    }
+
+    i {
+      transition: all .15s ease-in-out;
+      -webkit-transition: all .15s ease-in-out;
+      font-size: 18px;
+      cursor: pointer;
+
+      &:hover {
+        color: #05dada;
+      }
+    }
+  }
+
+  .claendar-header-week{
+    padding: 2px 0;
+    margin-top: 10px;
+    .serve-week{
+        display: inline-block;
+        width: 14%;
+        font-size: 15px;
+    }
+  }
+
+  .calendar-day-now {
+    background: #05dada;
+
+    .white-now {
+      color: $now-color;
+    }
+
+    .white-now-yl {
+      font-size: 12px;
+      color: rgba($now-color, 0.9);
+    }
+  }
+
+  .calendar-day-on {
+    background: #057adaa6;
+
+    .white-now {
+      color: $now-color;
+    }
+
+    .white-now-yl {
+      font-size: 12px;
+      color: rgba($now-color, 0.9);
+    }
+  }
+
+  .info-panel {
+    box-shadow: 0px 0px 3px 1px #529ce485;
+    display: none;
+    position: relative;
+    width: 110px;
+    border-radius: 5px;
+    height: 80px;
+    background: #067adac2;
+    z-index: 9;
+    font-size: 12px;
+    color: #ecf1f5;
+  }
+}
