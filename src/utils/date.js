@@ -39,6 +39,22 @@ export function parseTime(time, cFormat) {
   return time_str;
 }
 
+// 上一年
+export function lastYear(date) {
+  let arr = date.split("-");
+  let year = arr[0]; //获取当前日期的年份
+  let month = Number.parseInt(arr[1]); //获取当前日期的月份
+  return `${Number.parseInt(year) - 1}-${month < 10 ? '0'+ month : month}`;
+}
+
+// 下一年
+export function nextYear(date) {
+  let arr = date.split("-");
+  let year = arr[0]; //获取当前日期的年份
+  let month = Number.parseInt(arr[1]); //获取当前日期的月份
+  return `${Number.parseInt(year) + 1}-${month < 10 ? '0'+ month : month}`;
+}
+
 //上一月
 export function lastMonth(date) {
   let arr = date.split("-");
@@ -191,7 +207,6 @@ export function reorganizeDate(allday, firstDay, lastDay, yearMonth) {
     allDays = [...add, ...allDays];
   }
   if (lastDay !== 0) {
-    console.log(lastDay, 'lastDay')
     allDays = [...allDays, ...pushDay(7 - lastDay, allday, yearMonth, false)]
   }
   //将得到的数组按7条为一组拆开重组
@@ -218,18 +233,23 @@ export function reorganizeDate(allday, firstDay, lastDay, yearMonth) {
     }
   }
   //拆完重组得到的数组 [[],[],[],[],[]]  
+  if (outDays.length === 4) {
+    let arr = [...pushDayAll(outDays[3][6].day, 7, allday, yearMonth)];
+    outDays.push(arr)
+  }
+  
   if (outDays.length === 5) {
     let arr = [...pushDayAll(outDays[4][6].day, 7, allday, yearMonth)];
     outDays.push(arr)
   }
 
-  console.log(outDays,'outDays')
+
   return [...outDays];
 }
 
 //不是周一补全
 function pushDayAll(num, numALL, allday, yearMonth) {
-  if(num > 8){
+  if (num > 8) {
     num = 0
   }
   let date = new Date(`${yearMonth}-${allday}`).getTime() + 86400000;

@@ -1,21 +1,16 @@
 <template>
   <div id="app">
-      <wfl-calendar :isMonth="true"/>
+      <vue-wfl-calendar :isDay="true"/>
   </div>
 </template>
 
 <script>
-import WflCalendar from './components/calendar';
+import VueWflCalendar from './components/calendar';
 export default {
-  components:{
-      WflCalendar
+  components: {
+    VueWflCalendar
   },
   name: 'app',
-  data () {
-    return {
-
-    }
-  }
 }
 </script>
 
