@@ -156,8 +156,12 @@ export function MonthDayWeek(day, state = false, isAllDate = false) {
 }
 
 //获取每月的天数
-export function getMonDay(date) {
-  let days = date.split('-')
+export function getMonDay(date, flag=false) {
+  let days = date.split('-').map((v)=> Number.parseInt(v))
+  if(flag){
+    days[1] = days[1] === 1 ? 12 : days[1] - 1
+    days[0] = days[1] === 1 ? days[0] - 1 : days[0]
+  }
   let day = new Date(days[0], days[1], '0');
   return Number.parseInt(day.getDate());
 }
@@ -169,7 +173,7 @@ export function reorganizeDate(allday, firstDay, lastDay, yearMonth) {
   //j  周几
   let j = firstDay;
   for (let i = 1; i <= allday; i++) {
-    //初始数组中无值直接push  
+    //初始数组中无值直接push
     if (allDays.length === 0) {
       allDays.push({
         day: i,
@@ -180,7 +184,7 @@ export function reorganizeDate(allday, firstDay, lastDay, yearMonth) {
       });
       j++;
     } else {
-      //满7天重新从周一开始  
+      //满7天重新从周一开始
       if (j === 7) {
         j = 0;
       }
@@ -196,13 +200,14 @@ export function reorganizeDate(allday, firstDay, lastDay, yearMonth) {
   }
   //如果第一天不是周一 则添加空补全
   if (firstDay !== 1) {
+    let lastAllDay = getMonDay(yearMonth, true)
     let add = [];
-    //如果是周天  push 6条补全 
+    //如果是周天  push 6条补全
     if (firstDay === 0) {
-      add = pushDay(6, allday, yearMonth, true);
+      add = pushDay(6, lastAllDay, yearMonth, true);
       //否则 是周几push 几-1条补全
     } else {
-      add = pushDay(firstDay - 1, allday, yearMonth, true);
+      add = pushDay(firstDay - 1, lastAllDay, yearMonth, true);
     }
     allDays = [...add, ...allDays];
   }
@@ -232,12 +237,12 @@ export function reorganizeDate(allday, firstDay, lastDay, yearMonth) {
       outDay = [];
     }
   }
-  //拆完重组得到的数组 [[],[],[],[],[]]  
+  //拆完重组得到的数组 [[],[],[],[],[]]
   if (outDays.length === 4) {
     let arr = [...pushDayAll(outDays[3][6].day, 7, allday, yearMonth)];
     outDays.push(arr)
   }
-  
+
   if (outDays.length === 5) {
     let arr = [...pushDayAll(outDays[4][6].day, 7, allday, yearMonth)];
     outDays.push(arr)

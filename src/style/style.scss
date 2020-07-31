@@ -1,6 +1,6 @@
 /*
- * @Author: wfl 
- * @Date: 2019-01-28 14:46:50 
+ * @Author: wfl
+ * @Date: 2019-01-28 14:46:50
  * @Last Modified by: wfl
  * @Last Modified time: 2019-02-01 14:41:11
  */
@@ -56,7 +56,7 @@ $now-color: #fff;
 
   .calendar-head {
     padding: 10px 0;
-
+    user-select: none;
     .month-icon{
       padding: 0 10px;
     }
